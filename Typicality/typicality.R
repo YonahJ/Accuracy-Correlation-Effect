@@ -76,7 +76,47 @@ anova(typ_null, typ_me)
 # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 
-# z-score
+##
+typ_me <- lmer(
+  score ~ 
+    Type +
+    (1 | question) +
+    (1 | Model),
+  data = df_typ_long,
+  REML = TRUE
+)
+summary(typ_me)
+# Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+# Formula: score ~ Type + (1 | question) + (1 | Model)
+#    Data: df_typ_long
+# 
+# REML criterion at convergence: 8367.3
+# 
+# Scaled residuals: 
+#     Min      1Q  Median      3Q     Max 
+# -3.2528 -0.2215  0.2813  0.5378  1.8380 
+# 
+# Random effects:
+#  Groups   Name        Variance Std.Dev.
+#  question (Intercept) 2.28905  1.5130  
+#  Model    (Intercept) 0.08863  0.2977  
+#  Residual             5.44872  2.3342  
+# Number of obs: 1740, groups:  question, 580; Model, 3
+# 
+# Fixed effects:
+#             Estimate Std. Error       df t value Pr(>|t|)    
+# (Intercept)   8.0837     0.1933   2.6124   41.83 9.14e-05 ***
+# TypeMarket   -1.3985     0.2895 578.0001   -4.83 1.75e-06 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Correlation of Fixed Effects:
+#            (Intr)
+# TypeMarket -0.139
+confint(typ_me)
+
+
+## z-score
 df_typ_long_z <- df_typ_long %>%
   group_by(Model) %>%
   mutate(score_z = scale(score)[,1]) %>%
@@ -87,7 +127,8 @@ typ_me_z <- lmer(
     Type +
     (1 | question) +
     (1 | Model),
-  data = df_typ_long_z
+  data = df_typ_long_z,
+  REML = TRUE
 )
 
 summary(typ_me_z)
