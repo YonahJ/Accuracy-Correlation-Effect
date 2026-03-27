@@ -22,3 +22,6 @@ ACE_SCRIPT.R               # Main R script reproducing all analyses and figures
 ace_data_me.csv            # Processed data for mixed-effects models
 all_h_m.csv                # All human and model forecasts
 ```
+## License
+ 
+Code released under the [MIT License](LICENSE). Data from ForecastBench is used under its original license.
