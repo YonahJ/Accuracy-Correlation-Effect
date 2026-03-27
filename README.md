@@ -13,7 +13,7 @@ We analyze 76 model x prompt forecast sets from 16 LLMs on 580 resolved question
 ## Repository Structure
 
 ```
-ForecastBench Forecasts/   # Raw LLM and human forecast data from ForecastBench 21 July 2024 release
+ForecastBench Forecasts/   # Raw LLM and human forecast data from ForecastBench 21 July 2024 release (full raw data available at https://osf.io/vya6d/)
 FittedObjects/             # Saved model objects from mixed-effects analyses
 ME Diagnostics/            # Mixed-effects model diagnostic outputs
 Typicality/                # LLM-rated typicality validation (supplementary §ii)
